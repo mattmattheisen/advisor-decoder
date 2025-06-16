@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -95,10 +94,10 @@ def main():
     
     # Sidebar navigation
     st.sidebar.title("Navigation")
-   page = st.sidebar.selectbox(
-    "Choose a tool:",
-    ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🎯 Sales Tactics Decoder", "🔧 Meeting Prep Tool"]
-)
+    page = st.sidebar.selectbox(
+        "Choose a tool:",
+        ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool"]
+    )
     
     if page == "🏠 Quick Start":
         quick_start_page()
