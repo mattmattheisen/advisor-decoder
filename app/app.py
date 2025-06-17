@@ -346,7 +346,7 @@ def sales_tactics_page():
         for i, q in enumerate(questions, 1):
             st.write(f"**{i}.** {q}")
     
-    with tab5:
+    with tab4:
         st.subheader("🛡️ Your Defense Strategy")
         
         col1, col2 = st.columns(2)
