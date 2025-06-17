@@ -96,7 +96,7 @@ def main():
     st.sidebar.title("Navigation")
     page = st.sidebar.selectbox(
         "Choose a tool:",
-        ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🎯 Sales Tactics Decoder", "🔧 Meeting Prep Tool"]
+        ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🎯 Sales Tactics Decoder", "🏦 Annuity Decoder", "🔧 Meeting Prep Tool"]
     )
     
     if page == "🏠 Quick Start":
@@ -113,6 +113,8 @@ def main():
         glossary_page()
     elif page == "🎯 Sales Tactics Decoder":
         sales_tactics_page()
+    elif page == "🏦 Annuity Decoder":
+        annuity_decoder_page()
     elif page == "🔧 Meeting Prep Tool":
         meeting_prep_page()
 
@@ -176,7 +178,7 @@ def sales_tactics_page():
     st.write("**💡 Key Insight:** Financial advisors receive extensive sales training using proven psychological techniques.")
     st.markdown('</div>', unsafe_allow_html=True)
     
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🔄 Sales Process", "🧠 Psychology", "💬 Scripts", "🏦 Annuities", "🛡️ Defense"])
+    tab1, tab2, tab3, tab4 = st.tabs(["🔄 Sales Process", "🧠 Psychology", "💬 Scripts", "🛡️ Defense"])
     
     with tab1:
         st.subheader("The 5-Stage Sales Framework")
@@ -249,6 +251,38 @@ def sales_tactics_page():
             st.write("• You are missing opportunities")
             st.markdown('<div class="warning-box"><strong>What they are not saying:</strong> Research will find cheaper options</div>', unsafe_allow_html=True)
             st.markdown('<div class="success-box"><strong>Your comeback:</strong> Good decisions take time</div>', unsafe_allow_html=True)
+        
+        with st.expander("**Managed money takes emotion out of investing**"):
+            st.write("**Their script:**")
+            st.write("• Managed money keeps you disciplined")
+            st.write("• We remove emotional decision making")
+            st.write("• Professional management prevents costly mistakes")
+            st.markdown('<div class="warning-box"><strong>What they are not saying:</strong> Other options provide same discipline for much less</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your comeback:</strong> Asset allocation funds and target date funds do the same thing for a fraction of the cost</div>', unsafe_allow_html=True)
+        
+        with st.expander("**Access to our best and brightest minds**"):
+            st.write("**Their script:**")
+            st.write("• You gain access to our top portfolio managers")
+            st.write("• Our research team works for you")
+            st.write("• Professional money management expertise")
+            st.markdown('<div class="warning-box"><strong>What they are not saying:</strong> Same expertise available in lower-cost funds</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your comeback:</strong> Could I not gain access to the same expertise through your asset allocation funds, target date funds, or index funds?</div>', unsafe_allow_html=True)
+        
+        with st.expander("**I am passionate about planning**"):
+            st.write("**Their script:**")
+            st.write("• I love helping people reach their goals")
+            st.write("• Planning is my passion, not just my job")
+            st.write("• I care deeply about your financial future")
+            st.markdown('<div class="warning-box"><strong>What they are not saying:</strong> This may be a tactic to get you in the door</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> This could be a tactic to get you to meet with hopes of introducing an annuity or managed product</div>', unsafe_allow_html=True)
+        
+        with st.expander("**I do not get paid commission**"):
+            st.write("**Their script:**")
+            st.write("• I am not a commissioned salesperson")
+            st.write("• My compensation is not tied to what I sell")
+            st.write("• I am salaried, not commissioned")
+            st.markdown('<div class="warning-box"><strong>What they are not saying:</strong> Variable bonuses still create sales incentives</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your comeback:</strong> Do you get paid more for selling managed products than asset allocation funds? Are there incentives that might misalign with my needs?</div>', unsafe_allow_html=True)
     
     with tab4:
         st.subheader("🏦 Annuity Sales Tactics")
@@ -348,7 +382,10 @@ def sales_tactics_page():
         "I can only offer this rate today",
         "Free retirement analysis",
         "You agree planning is important?",
-        "You could outlive your money"
+        "You could outlive your money",
+        "Managed money takes emotion out of investing",
+        "I am passionate about planning",
+        "I do not get paid commission"
     ])
     
     if scenario == "Most people your age have started planning":
@@ -357,13 +394,158 @@ def sales_tactics_page():
     elif scenario == "I can only offer this rate today":
         st.markdown('<div class="alert-box"><strong>Technique:</strong> Scarcity</div>', unsafe_allow_html=True)
         st.markdown('<div class="success-box"><strong>Counter:</strong> Good options stay good</div>', unsafe_allow_html=True)
+    elif scenario == "Managed money takes emotion out of investing":
+        st.markdown('<div class="alert-box"><strong>Technique:</strong> Professional Management Pitch</div>', unsafe_allow_html=True)
+        st.markdown('<div class="success-box"><strong>Counter:</strong> Asset allocation and target date funds provide same discipline for less cost</div>', unsafe_allow_html=True)
+    elif scenario == "I am passionate about planning":
+        st.markdown('<div class="alert-box"><strong>Technique:</strong> Personal Connection Building</div>', unsafe_allow_html=True)
+        st.markdown('<div class="success-box"><strong>Counter:</strong> Recognize this may be tactic to introduce high-fee products</div>', unsafe_allow_html=True)
+    elif scenario == "I do not get paid commission":
+        st.markdown('<div class="alert-box"><strong>Technique:</strong> Compensation Deflection</div>', unsafe_allow_html=True)
+        st.markdown('<div class="success-box"><strong>Counter:</strong> Ask about variable bonuses and product-based incentives</div>', unsafe_allow_html=True)
+
+def annuity_decoder_page():
+    st.header("🏦 Annuity Decoder")
+    st.write("**Annuities are sold, not bought** - decode the tactics and protect yourself from aggressive sales.")
+    
+    st.markdown('<div class="alert-box">', unsafe_allow_html=True)
+    st.write("**⚠️ Reality Check:** Annuities often pay the highest commissions (4-8%) to advisors and use the most aggressive sales tactics in the financial industry.")
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    tab1, tab2, tab3 = st.tabs(["🎯 Sales Tactics", "🔍 Red Flag Checker", "💡 Killer Questions"])
+    
+    with tab1:
+        st.subheader("Common Annuity Sales Tactics")
+        
+        with st.expander("**The Fear Approach**"):
+            st.write("**What they say:**")
+            st.write("• You could outlive your money")
+            st.write("• What if the market crashes right when you retire?")
+            st.write("• Social Security will not be enough")
+            st.write("• You need guaranteed income you cannot outlive")
+            st.markdown('<div class="warning-box"><strong>Reality:</strong> Most people do not need guaranteed income products with 2-3% annual fees</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> Show me total costs versus a diversified portfolio with 4% withdrawal rate</div>', unsafe_allow_html=True)
+        
+        with st.expander("**Free Lunch Seminars**"):
+            st.write("**What they say:**")
+            st.write("• Free dinner and financial education")
+            st.write("• Learn about protecting your retirement")
+            st.write("• No sales presentation, just education")
+            st.write("• Bring your spouse - you will both learn something")
+            st.markdown('<div class="warning-box"><strong>Reality:</strong> These seminars exist solely to generate annuity sales leads</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> If you attend, decide beforehand to make no commitments that day</div>', unsafe_allow_html=True)
+        
+        with st.expander("**The Urgency Close**"):
+            st.write("**What they say:**")
+            st.write("• This rate is only guaranteed until [date]")
+            st.write("• I can only reserve this bonus for a few more days")
+            st.write("• Interest rates are rising - lock in now")
+            st.write("• The insurance company is limiting these sales")
+            st.markdown('<div class="warning-box"><strong>Reality:</strong> Good financial products do not require immediate decisions</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> If this is truly best for me, it will still be best after I research alternatives</div>', unsafe_allow_html=True)
+        
+        with st.expander("**Bonus Bait**"):
+            st.write("**What they say:**")
+            st.write("• Get 10% bonus on your deposit")
+            st.write("• Free money just for signing up")
+            st.write("• This bonus is only available for new customers")
+            st.write("• The insurance company is paying you to invest")
+            st.markdown('<div class="warning-box"><strong>Reality:</strong> Bonuses are marketing gimmicks paid through higher fees</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> What are the surrender charges and how long do they last?</div>', unsafe_allow_html=True)
+        
+        with st.expander("**The Complexity Confusion**"):
+            st.write("**What they say:**")
+            st.write("• This is a sophisticated retirement strategy")
+            st.write("• It is complicated, but I will handle the details")
+            st.write("• Do not worry about understanding everything")
+            st.write("• Trust me, this is what wealthy people do")
+            st.markdown('<div class="warning-box"><strong>Reality:</strong> If you cannot understand it, you should not buy it</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> Please explain this in simple terms and show me all fees in writing</div>', unsafe_allow_html=True)
+        
+        with st.expander("**Market Protection Story**"):
+            st.write("**What they say:**")
+            st.write("• Participate in market gains without market risk")
+            st.write("• Your principal is protected")
+            st.write("• You cannot lose money in this product")
+            st.write("• Get market returns with insurance company backing")
+            st.markdown('<div class="warning-box"><strong>Reality:</strong> Protection comes at a cost - usually 2-3% in annual fees</div>', unsafe_allow_html=True)
+            st.markdown('<div class="success-box"><strong>Your response:</strong> What caps, spreads, and participation rates limit my returns?</div>', unsafe_allow_html=True)
+    
+    with tab2:
+        st.subheader("🔍 Annuity Red Flags Checker")
+        st.write("**Check any that apply to your situation:**")
+        
+        red_flags = [
+            "Salesperson focuses on benefits, avoids discussing fees",
+            "Pressure to move money from 401k or IRA immediately", 
+            "Promises of guaranteed high returns",
+            "Will not explain surrender charges clearly",
+            "Emphasizes bonus while minimizing restrictions",
+            "Claims product is just like a CD but better",
+            "Refuses to provide prospectus or detailed documentation",
+            "Targets recent widows, retirees, or elderly individuals",
+            "Makes appointment at your home instead of office",
+            "Discourages you from consulting family or other advisors"
+        ]
+        
+        selected_flags = []
+        for flag in red_flags:
+            if st.checkbox(flag, key=f"annuity_flag_{flag[:20]}"):
+                selected_flags.append(flag)
+        
+        if selected_flags:
+            risk_level = len(selected_flags)
+            if risk_level >= 5:
+                st.markdown('<div class="alert-box">', unsafe_allow_html=True)
+                st.write(f"**🚨 HIGH RISK SITUATION** ({risk_level} red flags)")
+                st.write("**Recommendation:** Do not proceed. Seek independent financial advice immediately.")
+                st.markdown('</div>', unsafe_allow_html=True)
+            elif risk_level >= 3:
+                st.markdown('<div class="warning-box">', unsafe_allow_html=True)
+                st.write(f"**⚠️ MEDIUM RISK** ({risk_level} red flags)")
+                st.write("**Recommendation:** Take time to research. Get second opinion from fee-only advisor.")
+                st.markdown('</div>', unsafe_allow_html=True)
+            else:
+                st.markdown('<div class="warning-box">', unsafe_allow_html=True)
+                st.write(f"**⚠️ SOME CONCERNS** ({risk_level} red flags)")
+                st.write("**Recommendation:** Ask for all documentation in writing and compare alternatives.")
+                st.markdown('</div>', unsafe_allow_html=True)
+    
+    with tab3:
+        st.subheader("💡 Questions That Stop Annuity Sales Cold")
+        st.write("**Use these specific questions to cut through the sales pitch:**")
+        
+        killer_questions = [
+            "What are the total annual fees, including M&E charges, admin fees, and rider costs?",
+            "What exactly are the surrender charges and how long do they last?",
+            "What caps, spreads, or participation rates limit my returns?",
+            "How does this compare to a low-cost diversified portfolio over 20 years?",
+            "Can you show me the illustration with ALL fees deducted?",
+            "What happens if I need my money for an emergency?",
+            "How much commission do you earn from this sale?",
+            "What would happen if your insurance company went bankrupt?",
+            "Can I get the same benefits cheaper with a different product?",
+            "Why is this better than just buying index funds and term life insurance?"
+        ]
+        
+        for i, question in enumerate(killer_questions, 1):
+            st.write(f"**{i}.** {question}")
+        
+        st.markdown('<div class="success-box">', unsafe_allow_html=True)
+        st.write("**💡 Pro Tip:** A legitimate annuity salesperson will welcome these questions. Anyone who gets defensive, changes the subject, or refuses to answer clearly is showing their true intentions.")
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.write("---")
+    st.markdown('<div class="warning-box">', unsafe_allow_html=True)
+    st.write("**🎯 Bottom Line:** Annuities are complex insurance products that are heavily marketed to seniors and retirees. The high commissions create strong incentives for aggressive sales tactics. Always get independent advice before purchasing.")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 def meeting_prep_page():
     st.header("🔧 Meeting Prep Tool")
     st.write("Prepare for your advisor meeting with the right questions.")
     
     meeting_type = st.selectbox("Meeting type:", [
-        "First meeting", "Annual review", "New investment", "Fee discussion"
+        "First meeting", "Annual review"
     ])
     
     if meeting_type == "First meeting":
@@ -372,10 +554,35 @@ def meeting_prep_page():
             "How are you compensated?",
             "Are you a fiduciary?", 
             "What are all fees?",
-            "Do you get money from fund companies?"
+            "Do you get money from fund companies?",
+            "Are you ranked against other reps in the country?",
+            "What categories are you ranked by - be specific?",
+            "What are the variables in your variable compensation?",
+            "Are you incentivized to close annuity and managed money business to rise in rankings?",
+            "Does closing more complex products increase your variable bonus?"
         ]
         for i, q in enumerate(questions, 1):
             st.write(f"{i}. {q}")
+        
+        st.markdown('<div class="warning-box">', unsafe_allow_html=True)
+        st.write("**Important:** Do not accept vague answers like 'variable compensation.' Ask for specifics about what those variables are and how they might create conflicts with your needs.")
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    elif meeting_type == "Annual review":
+        st.subheader("Annual Review Questions")
+        questions = [
+            "Can you show me performance versus the benchmark?",
+            "What were my total fees for the year in dollar amounts (not percentages)?",
+            "How did my portfolio perform compared to a simple index fund?",
+            "What specific value did active management add this year?",
+            "Can you justify the fees based on performance results?"
+        ]
+        for i, q in enumerate(questions, 1):
+            st.write(f"{i}. {q}")
+        
+        st.markdown('<div class="success-box">', unsafe_allow_html=True)
+        st.write("**Key Focus:** Get concrete numbers, not percentages. A 1% fee sounds small until you see it cost you $3,000 on a $300,000 account.")
+        st.markdown('</div>', unsafe_allow_html=True)
     
     st.write("---")
     st.subheader("Red Flags")
@@ -452,7 +659,11 @@ def fee_calculator_page():
 
 def conflict_checker_page():
     st.header("⚠️ Conflict Checker")
-    st.write("Check for advisor conflicts.")
+    st.write("Check for advisor conflicts based on what you know about your advisor relationship.")
+    
+    st.markdown('<div class="warning-box">', unsafe_allow_html=True)
+    st.write("**How this works:** This tool helps you identify potential conflicts based on your advisor's compensation structure and business model. You do not need to upload any documents - just answer based on what you know or have been told about your advisor.")
+    st.markdown('</div>', unsafe_allow_html=True)
     
     conflicts = [
         "Commission compensation",
