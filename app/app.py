@@ -90,8 +90,8 @@ CONFLICT_INDICATORS = [
 
 def main():
     st.markdown('<h1 class="main-header">🔍 Advisor Decoder</h1>', unsafe_allow_html=True)
-    st.markdown("**Uncover hidden fees and conflicts of interest in your financial products**")
-    st.markdown("**Don't Get Sold - Get Decoded**")
+    st.markdown('<div style="text-align: center; margin-bottom: 1rem;"><em>Uncover hidden fees and conflicts of interest in your financial products</em></div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align: center; margin-bottom: 2rem;"><strong>Don\'t Get Sold - Get Decoded</strong></div>', unsafe_allow_html=True)
     # Sidebar navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.selectbox(
