@@ -238,7 +238,7 @@ def quick_start_page():
             "Low-Cost Index Fund (0.05%)": investment_amount * 0.0005,
             "Typical Managed Account (1.0%)": investment_amount * 0.01,
             "High-Fee Advisory (2.5%)": investment_amount * 0.025,
-            "Wells Fargo + Fees (3.0%+)": investment_amount * 0.03
+            "Company C + Fees (3.0%+)": investment_amount * 0.03
         }
         
         st.write("**Annual fees you might pay:**")
@@ -506,8 +506,8 @@ def analyze_fees(file):
         
         # Show advisor compensation too
         if investment_amount >= 100000:
-            fidelity_annual_advisor_pay = investment_amount * 0.0002  # Wealth management engagement
-            schwab_annual_advisor_pay = investment_amount * 0.0035  # Mid-range Category 1
+            company_a_annual_advisor_pay = investment_amount * 0.0002  # Wealth management engagement
+            company_b_annual_advisor_pay = investment_amount * 0.0035  # Mid-range Category 1
             
             col1, col2, col3 = st.columns(3)
             with col1:
@@ -515,7 +515,7 @@ def analyze_fees(file):
             with col2:
                 st.metric("Your Total Cost", f"${total_cost:,.0f}")
             with col3:
-                st.metric("Advisor's Annual Pay", f"${fidelity_annual_advisor_pay:,.0f} - ${schwab_annual_advisor_pay:,.0f}")
+                st.metric("Advisor's Annual Pay", f"${company_a_annual_advisor_pay:,.0f} - ${company_b_annual_advisor_pay:,.0f}")
         
         st.markdown('<div class="warning-box">', unsafe_allow_html=True)
         st.write("**💡 Key Insight:** Your advisor is financially incentivized to recommend higher-fee products and services. This analysis is based on actual compensation disclosures from major firms.")
@@ -712,28 +712,29 @@ def conflict_checker_page():
 
 def compensation_database_page():
     st.header("💰 Compensation Database")
-    st.write("Real compensation data from Fidelity, Schwab, and Wells Fargo disclosure documents.")
+    st.write("Real compensation data from major financial firms' official disclosure documents.")
     
     # Real compensation data from actual documents
-    firm = st.selectbox("Select Firm", ["Fidelity", "Schwab", "Wells Fargo", "Compare All Three"])
+    firm = st.selectbox("Select Firm", ["Company A", "Company B", "Company C", "Compare All Three"])
     
-    if firm == "Fidelity":
-        st.subheader("🟢 Fidelity Compensation Structure")
+    if firm == "Company A":
+        st.subheader("🟢 Company A Compensation Structure")
+        st.caption("*Data from major investment firm disclosure document (Jan 2024)*")
         
         st.write("**Base Pay Structure:**")
         st.write("• Financial Consultants: 20% - 45% base salary, 55% - 80% variable compensation")
         st.write("• Variable compensation based on Client Loyalty, Client Planning & Investments, Client Engagement")
         
         st.subheader("Fee Structure by Investment Type")
-        fidelity_fees = {
+        company_a_fees = {
             "Money Market Funds": "0.0001 rate (lowest tier)",
             "Mutual Funds/ETFs": "0.0004 rate",
-            "Fidelity Wealth Services": "0.001 rate (highest tier)",
+            "Wealth Management Services": "0.001 rate (highest tier)",
             "Assets Transferred": "0.0005 rate (one-time)",
             "Additional Transfer Bonus": "+0.0005 from other firms"
         }
         
-        for investment, rate in fidelity_fees.items():
+        for investment, rate in company_a_fees.items():
             st.write(f"• **{investment}:** {rate}")
         
         st.subheader("Client Engagement (Annual Fees)")
@@ -750,8 +751,9 @@ def compensation_database_page():
         st.write("**Conflict Alert:** Representatives earn MORE for complex products that require more time, creating incentive to recommend higher-fee services.")
         st.markdown('</div>', unsafe_allow_html=True)
     
-    elif firm == "Schwab":
-        st.subheader("🔵 Schwab Compensation Structure")
+    elif firm == "Company B":
+        st.subheader("🔵 Company B Compensation Structure")
+        st.caption("*Data from major brokerage firm disclosure document (Apr 2025)*")
         
         st.write("**Relationship Pay Categories:**")
         st.write("• **Category 1 (Portfolio Management):** 32-42 basis points annually")
@@ -761,8 +763,8 @@ def compensation_database_page():
         st.subheader("Solutions Pay (One-Time Payments)")
         solutions_pay = {
             "Asset Consolidation": "$80 per $100k client balances",
-            "Schwab Wealth Advisory": "$200 per $100k enrolled",
-            "Intelligent Portfolios": "$200 per $100k enrolled",
+            "Wealth Advisory Programs": "$200 per $100k enrolled",
+            "Robo-Advisory Services": "$200 per $100k enrolled",
             "Annuities": "$200 per $100k of annuity amount"
         }
         
@@ -771,7 +773,7 @@ def compensation_database_page():
         
         st.subheader("Referral Payments")
         referral_payments = {
-            "Schwab Advisor Services": "$800 (up to $30M) / $3,500 ($30M+)",
+            "Advisory Services": "$800 (up to $30M) / $3,500 ($30M+)",
             "Life Insurance": "$450 per converted referral",
             "Long-Term Care Insurance": "$450 per converted referral",
             "Alternative Investments": "$200 per $100k invested",
@@ -785,11 +787,12 @@ def compensation_database_page():
         st.write("**Conflict Alert:** Higher compensation for managed accounts creates incentive to move clients from self-directed to fee-based advisory services.")
         st.markdown('</div>', unsafe_allow_html=True)
     
-    elif firm == "Wells Fargo":
-        st.subheader("🟡 Wells Fargo Fee Structure")
+    elif firm == "Company C":
+        st.subheader("🟡 Company C Fee Structure")
+        st.caption("*Data from major bank-affiliated firm disclosure document (Mar 2025)*")
         
         st.write("**Annual Account Fees (The Hidden Costs):**")
-        wf_annual_fees = {
+        company_c_annual_fees = {
             "Non-fee-exempt taxable account": "$175 annually ($150 with electronic docs)",
             "IRA Custodial Fee": "$125 annually ($100 with electronic docs)", 
             "Educational Savings/UGMA/UTMA": "$50 annually",
@@ -797,11 +800,11 @@ def compensation_database_page():
             "Outside Investment Fee": "$250 annually per position"
         }
         
-        for fee_type, amount in wf_annual_fees.items():
+        for fee_type, amount in company_c_annual_fees.items():
             st.write(f"• **{fee_type}:** {amount}")
         
         st.subheader("Transaction & Service Fees")
-        wf_transaction_fees = {
+        company_c_transaction_fees = {
             "Account Transfer (Outgoing)": "$125 per transfer",
             "IRA Termination Fee": "$125 per termination",
             "Transaction Fee": "$7 per transaction",
@@ -809,31 +812,32 @@ def compensation_database_page():
             "Physical Certificate": "$500 minimum per security"
         }
         
-        for service, fee in wf_transaction_fees.items():
+        for service, fee in company_c_transaction_fees.items():
             st.write(f"• **{service}:** {fee}")
         
         st.subheader("Advisory Management Fees")
-        st.write("• **Personalized UMA:** 0.22% - 0.50% annually (varies by strategy)")
+        st.write("• **Managed Accounts:** 0.22% - 0.50% annually (varies by strategy)")
         st.write("• **Plus Platform Fee:** Additional 0.050% annually")
         st.write("• **Total Advisory Cost:** 0.27% - 0.55% annually")
         
         st.markdown('<div class="alert-box">', unsafe_allow_html=True)
-        st.write("**Major Conflict:** Wells Fargo charges annual account fees that can be waived if you have $500k+ OR use their advisory services. This creates pressure to either invest more or pay for advice.")
+        st.write("**Major Conflict:** This firm charges annual account fees that can be waived if you have $500k+ OR use their advisory services. This creates pressure to either invest more or pay for advice.")
         st.markdown('</div>', unsafe_allow_html=True)
         
         st.subheader("Fee Waiver Thresholds")
         st.write("**Annual fees waived if you have:**")
         st.write("• $500,000+ total household assets, OR")
         st.write("• $250,000+ in advisory accounts, OR") 
-        st.write("• Wells Fargo Premier/Private Bank checking account")
+        st.write("• Bank premier checking account relationship")
         
     elif firm == "Compare All Three":
         st.subheader("🆚 Three-Firm Comparison")
+        st.caption("*Data from actual compensation disclosure documents*")
         
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.write("**🟢 Fidelity**")
+            st.write("**🟢 Company A**")
             st.write("• Variable comp: 55-80%")
             st.write("• Product-based tiers")
             st.write("• Annual engagement fees")
@@ -841,7 +845,7 @@ def compensation_database_page():
             st.write("• Transfer bonuses")
             
         with col2:
-            st.write("**🔵 Schwab**")
+            st.write("**🔵 Company B**")
             st.write("• Category-based pay")
             st.write("• One-time 'Solutions Pay'")
             st.write("• Extensive referrals")
@@ -849,27 +853,27 @@ def compensation_database_page():
             st.write("• Managed account bias")
             
         with col3:
-            st.write("**🟡 Wells Fargo**")
+            st.write("**🟡 Company C**")
             st.write("• Annual account fees")
             st.write("• Fee waiver incentives")
             st.write("• Platform fees on advisors")
             st.write("• High service fees")
-            st.write("• Banking product integration")
+            st.write("• Banking integration")
         
         st.subheader("🚨 Unique Conflicts by Firm")
         
         firm_conflicts = {
-            "Fidelity": [
+            "Company A": [
                 "10x higher pay for Wealth Services vs Money Market",
                 "55-80% of advisor pay is variable based on your choices",
                 "Ongoing 'engagement' fees on all your balances"
             ],
-            "Schwab": [
+            "Company B": [
                 "3-4x higher pay for managed vs self-directed accounts", 
                 "One-time bonuses for enrolling you in services",
                 "$175-$3,500 referral payments create bias"
             ],
-            "Wells Fargo": [
+            "Company C": [
                 "Annual fees designed to push you toward advisory accounts",
                 "Platform fees make advisors prefer certain strategies",
                 "Banking relationships create cross-selling pressure"
@@ -885,16 +889,16 @@ def compensation_database_page():
         
         comparison_data = {
             "Scenario": ["Self-Directed Investing", "Basic Advisory", "Premium Advisory"],
-            "Fidelity": ["$0 account fees + small engagement fees", "$500-$1,500 annually", "$1,000+ annually"],
-            "Schwab": ["$0 account fees", "$600-$1,200 annually", "$1,200-$1,850 annually"], 
-            "Wells Fargo": ["$175 annual fee (waived with $500k)", "$270-$550 + platform fee", "$550+ annually"]
+            "Company A": ["$0 account fees + small engagement fees", "$500-$1,500 annually", "$1,000+ annually"],
+            "Company B": ["$0 account fees", "$600-$1,200 annually", "$1,200-$1,850 annually"], 
+            "Company C": ["$175 annual fee (waived with $500k)", "$270-$550 + platform fee", "$550+ annually"]
         }
         
         comparison_df = pd.DataFrame(comparison_data)
         st.table(comparison_df)
     
     st.write("---")
-    st.write("**Sources:** Official compensation disclosure documents - Fidelity (Jan 2024), Schwab (Apr 2025), Wells Fargo (Mar 2025)")
+    st.write("**Sources:** Official compensation disclosure documents from major financial firms (2024-2025)")
     
     # Enhanced search functionality
     st.subheader("🔍 Search All Firms' Compensation Data")
@@ -904,17 +908,17 @@ def compensation_database_page():
         search_results = []
         search_lower = search_term.lower()
         
-        # Enhanced search terms including Wells Fargo
+        # Enhanced search terms with generic names
         compensation_search = {
-            "annual fee": "Wells Fargo: $175 annually (others: $0), Fidelity/Schwab: No annual account fees",
-            "wealth management": "Fidelity: 0.001 rate, Schwab: 32-42 basis points, Wells Fargo: 0.27-0.55%",
-            "mutual fund": "Fidelity: 0.0004 rate, Wells Fargo: $50 transaction fee", 
-            "transfer": "Fidelity: 0.0005 + bonus, Schwab: $80 per $100k, Wells Fargo: $125 fee",
+            "annual fee": "Company C: $175 annually (others: $0), Company A/B: No annual account fees",
+            "wealth management": "Company A: 0.001 rate, Company B: 32-42 basis points, Company C: 0.27-0.55%",
+            "mutual fund": "Company A: 0.0004 rate, Company C: $50 transaction fee", 
+            "transfer": "Company A: 0.0005 + bonus, Company B: $80 per $100k, Company C: $125 fee",
             "advisory": "All firms heavily incentivize advisory accounts over self-directed",
-            "platform fee": "Wells Fargo: 0.050% annually on top of advisory fees",
-            "account maintenance": "Wells Fargo: $175 annually unless waived, others: $0",
-            "ira fee": "Wells Fargo: $125 annually, others: $0",
-            "termination": "Wells Fargo: $125 to close accounts, others: varies"
+            "platform fee": "Company C: 0.050% annually on top of advisory fees",
+            "account maintenance": "Company C: $175 annually unless waived, others: $0",
+            "ira fee": "Company C: $125 annually, others: $0",
+            "termination": "Company C: $125 to close accounts, others: varies"
         }
         
         for term, result in compensation_search.items():
@@ -933,10 +937,10 @@ def compensation_database_page():
     st.subheader("💡 Key Insights from All Three Firms")
     
     insights = [
-        "**Wells Fargo is the Most Expensive:** Annual account fees, platform fees, and high transaction costs",
-        "**Fee Waiver Manipulation:** Wells Fargo waives fees if you use their advisory services - creating artificial pressure",
-        "**Fidelity Has Highest Variable Compensation:** 55-80% of advisor pay depends on what you buy",
-        "**Schwab Pushes Managed Accounts:** 3-4x higher advisor compensation vs self-directed",
+        "**Company C is the Most Expensive:** Annual account fees, platform fees, and high transaction costs",
+        "**Fee Waiver Manipulation:** Company C waives fees if you use their advisory services - creating artificial pressure",
+        "**Company A Has Highest Variable Compensation:** 55-80% of advisor pay depends on what you buy",
+        "**Company B Pushes Managed Accounts:** 3-4x higher advisor compensation vs self-directed",
         "**All Firms Favor Complex Products:** Higher fees and advisor compensation for sophisticated strategies",
         "**Transfer Bonuses Are Universal:** All three firms pay advisors when you move money to them"
     ]
@@ -945,7 +949,7 @@ def compensation_database_page():
         st.write(f"• {insight}")
     
     st.markdown('<div class="warning-box">', unsafe_allow_html=True)
-    st.write("**🎯 Bottom Line:** Wells Fargo has the highest fees and most pressure tactics. Fidelity and Schwab are more competitive but still have significant conflicts of interest built into their compensation structures.")
+    st.write("**🎯 Bottom Line:** Company C has the highest fees and most pressure tactics. Companies A and B are more competitive but still have significant conflicts of interest built into their compensation structures.")
     st.markdown('</div>', unsafe_allow_html=True)
 
 def glossary_page():
@@ -964,7 +968,7 @@ def glossary_page():
             
             "You need professional management": "**Translation:** I make more money from managed accounts than self-directed ones. **Reality:** Schwab advisors earn 32-42 basis points on managed vs. 9-12 on self-directed.",
             
-            "Let's consolidate your accounts": "**Translation:** I get paid when you move assets here - Schwab: $80 per $100k, Wells Fargo: $125 fee to you but incentives to advisors. **Ask:** What do you earn when I transfer my accounts, and what fees will I pay?",
+            "Let's consolidate your accounts": "**Translation:** I get paid when you move assets here - Company B: $80 per $100k, Company C: $125 fee to you but incentives to advisors. **Ask:** What do you earn when I transfer my accounts, and what fees will I pay?",
             
             "This fund has excellent performance": "**What they don't say:** I get paid more from this fund company through revenue sharing. **Ask:** Do you receive any compensation from this fund company?",
             
