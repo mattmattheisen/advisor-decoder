@@ -246,7 +246,7 @@ def quick_start_page():
         for scenario, annual_fee in fee_scenarios.items():
             if "Low-Cost" in scenario:
                 st.markdown(f"• **{scenario}**: ${annual_fee:,.0f} per year ✅")
-            elif "Wells Fargo" in scenario:
+            elif "Company C" in scenario:
                 st.markdown(f"• **{scenario}**: ${annual_fee:,.0f} per year ⚠️")
             else:
                 st.markdown(f"• **{scenario}**: ${annual_fee:,.0f} per year")
@@ -477,13 +477,13 @@ def analyze_fees(file):
         st.subheader("💡 How Your Advisor Gets Paid")
         
         advisor_compensation = {
-            "If you're with Fidelity": [
+            "If you're with Company A": [
                 "Advisor gets 0.001 rate for Wealth Management products",
                 "0.0004 rate for mutual funds/ETFs", 
                 "0.0005 one-time bonus if you transferred from another firm",
                 "Annual 'engagement' fees of 0.00003-0.0002 on your balances"
             ],
-            "If you're with Schwab": [
+            "If you're with Company B": [
                 "Advisor gets 32-42 basis points annually on managed accounts",
                 "9-12 basis points on non-managed accounts",
                 "$200 per $100k if you enroll in advisory services",
@@ -1004,9 +1004,9 @@ def glossary_page():
         glossary_terms = {
             "12b-1 Fee": "A fee charged by mutual funds to cover marketing and distribution costs, typically 0.25% to 0.75% annually. **Real Impact:** Fidelity advisors get paid from these fees - it's part of their 'Client Planning & Investment' compensation.",
             
-            "Annual Account Fee": "Fee charged by Wells Fargo ($175 annually) that can be waived if you have $500k+ or use their advisory services. **Conflict:** Creates pressure to either invest more or pay for advice.",
+            "Annual Account Fee": "Fee charged by some major firms ($175 annually) that can be waived if you have $500k+ or use their advisory services. **Conflict:** Creates pressure to either invest more or pay for advice.",
             
-            "Platform Fee": "Wells Fargo's additional 0.050% annual fee on top of advisory fees. **Impact:** Adds $50 per year on every $100k in advisory accounts.",
+            "Platform Fee": "Additional fee (0.050% annually) charged by some firms on top of advisory fees. **Impact:** Adds $50 per year on every $100k in advisory accounts.",
             
             "AUM (Assets Under Management)": "The total value of investments managed by an advisor or firm. **Advisor Incentive:** Both Fidelity and Schwab pay advisors more as your AUM increases, creating incentive to gather assets.",
             
