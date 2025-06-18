@@ -972,11 +972,11 @@ def glossary_page():
             
             "This fund has excellent performance": "**What they don't say:** I get paid more from this fund company through revenue sharing. **Ask:** Do you receive any compensation from this fund company?",
             
-            "You should consider our advisory program": "**Translation:** I get $200 per $100k when you enroll (actual Schwab rate). **Ask:** How does your compensation change if I join this program?",
+            "You should consider our advisory program": "**Translation:** I get $200 per $100k when you enroll (actual rate from major firm). **Ask:** How does your compensation change if I join this program?",
             
             "This is a core holding": "**Translation:** This investment pays me ongoing fees. **Ask:** What ongoing fees do you receive from this investment?",
             
-            "Let me introduce you to our insurance specialist": "**Translation:** I get a referral bonus of $450-$800 (actual Schwab rates). **Ask:** Do you earn anything if I meet with other specialists?",
+            "Let me introduce you to our insurance specialist": "**Translation:** I get a referral bonus of $450-$800 (actual rates from major firms). **Ask:** Do you earn anything if I meet with other specialists?",
             
             "This has tax advantages": "**Often means:** Complex product with high fees. **Ask:** What are the total costs, and are there simpler alternatives?",
             
@@ -1008,11 +1008,11 @@ def glossary_page():
             
             "Platform Fee": "Additional fee (0.050% annually) charged by some firms on top of advisory fees. **Impact:** Adds $50 per year on every $100k in advisory accounts.",
             
-            "AUM (Assets Under Management)": "The total value of investments managed by an advisor or firm. **Advisor Incentive:** Both Fidelity and Schwab pay advisors more as your AUM increases, creating incentive to gather assets.",
+            "AUM (Assets Under Management)": "The total value of investments managed by an advisor or firm. **Advisor Incentive:** Major firms pay advisors more as your AUM increases, creating incentive to gather assets.",
             
-            "Basis Points": "One basis point = 0.01%. So 100 basis points = 1%. **Example:** Schwab's 35 basis points = 0.35% annual fee on your account balance.",
+            "Basis Points": "One basis point = 0.01%. So 100 basis points = 1%. **Example:** 35 basis points = 0.35% annual fee on your account balance.",
             
-            "Expense Ratio": "The annual fee charged by mutual funds and ETFs, expressed as a percentage of assets. **Range:** Can be 0.015% to 1.25% according to actual Fidelity disclosures.",
+            "Expense Ratio": "The annual fee charged by mutual funds and ETFs, expressed as a percentage of assets. **Range:** Can be 0.015% to 1.25% according to actual major firm disclosures.",
             
             "Load Fee": "A sales charge on mutual funds, either paid upfront (front-load) or when selling (back-load). **Current Status:** Less common now, replaced by ongoing advisory fees and 12b-1 fees.",
             
