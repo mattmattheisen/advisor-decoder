@@ -267,7 +267,7 @@ def analyze_fees(file):
             st.error(f"Error analyzing document: {str(e)}")
             st.write("Please check your OpenAI API key and try again.")
 
-def main():
+
 def main():
     st.markdown('<h1 class="main-header">🔍 Advisor Decoder</h1>', unsafe_allow_html=True)
     st.markdown("**Uncover hidden fees and conflicts of interest in your financial products**")
