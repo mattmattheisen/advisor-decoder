@@ -97,7 +97,39 @@ CONFLICT_INDICATORS = [
     "higher rates for complex products",
     "annual engagement fees on client balances"
 ]
-
+def extract_text_from_file(uploaded_file):
+    """Extract text from various file types"""
+    text = ""
+    
+    if uploaded_file.type == "application/pdf":
+        try:
+            # Read PDF
+            pdf_reader = PyPDF2.PdfReader(uploaded_file)
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+        except Exception as e:
+            st.error(f"Error reading PDF: {str(e)}")
+            return None
+            
+    elif uploaded_file.type == "text/plain":
+        # Read text file
+        text = str(uploaded_file.read(), "utf-8")
+        
+    elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+        # Read Word document
+        try:
+            doc = docx.Document(uploaded_file)
+            for paragraph in doc.paragraphs:
+                text += paragraph.text + "\n"
+        except Exception as e:
+            st.error(f"Error reading Word document: {str(e)}")
+            return None
+            
+    else:
+        st.error("Unsupported file type. Please upload PDF, TXT, or DOCX files.")
+        return None
+    
+    return text
 def main():
     st.markdown('<h1 class="main-header">🔍 Advisor Decoder</h1>', unsafe_allow_html=True)
     st.markdown("**Uncover hidden fees and conflicts of interest in your financial products**")
@@ -455,82 +487,70 @@ def document_analysis_page():
                 generate_report(uploaded_file)
 
 def analyze_fees(file):
-    """Simulate fee analysis using real compensation data"""
+    """Actually analyze the uploaded document using OpenAI"""
     st.subheader("Fee Analysis Results")
     
-    # Enhanced analysis using real Fidelity/Schwab data
-    with st.spinner("Analyzing document using real compensation databases..."):
-        import time
-        time.sleep(2)
+    # Extract text from the document
+    with st.spinner("Extracting text from document..."):
+        extracted_text = extract_text_from_file(file)
         
-        # More realistic fee analysis based on actual documents
-        fees_found = {
-            "Advisory Management Fee": "1.25% (typical range 0.50-1.85%)",
-            "Mutual Fund Expense Ratio": "0.68% (can be 0.015-1.25%)",
-            "12b-1 Marketing Fee": "0.25% (hidden in fund expenses)",
-            "Administrative Fee": "0.15% (often not disclosed)",
-            "Transaction/Trading Costs": "0.12% (embedded costs)"
-        }
-        
-        total_annual_cost = 2.45
-        
-        st.markdown('<div class="alert-box">', unsafe_allow_html=True)
-        st.write(f"**Total Annual Cost: {total_annual_cost}%**")
-        st.write("*This represents typical fees found in advisor compensation disclosures*")
-        st.markdown('</div>', unsafe_allow_html=True)
-        
-        st.write("**Fees Identified (Based on Real Compensation Data):**")
-        for fee, rate in fees_found.items():
-            st.write(f"• {fee}: {rate}")
-        
-        # Advisor compensation implications
-        st.subheader("💡 How Your Advisor Gets Paid")
-        
-        advisor_compensation = {
-            "If you're with Company A": [
-                "Advisor gets 0.001 rate for Wealth Management products",
-                "0.0004 rate for mutual funds/ETFs", 
-                "0.0005 one-time bonus if you transferred from another firm",
-                "Annual 'engagement' fees of 0.00003-0.0002 on your balances"
-            ],
-            "If you're with Company B": [
-                "Advisor gets 32-42 basis points annually on managed accounts",
-                "9-12 basis points on non-managed accounts",
-                "$200 per $100k if you enroll in advisory services",
-                "Various referral bonuses for insurance, alternatives, etc."
-            ]
-        }
-        
-        for firm, details in advisor_compensation.items():
-            with st.expander(f"**{firm}**"):
-                for detail in details:
-                    st.write(f"• {detail}")
-        
-        # Cost projection with real implications
-        st.subheader("Cost Impact Analysis")
-        investment_amount = st.number_input("Enter investment amount ($)", min_value=1000, value=100000, step=1000)
-        years = st.slider("Investment period (years)", 1, 30, 10)
-        
-        annual_cost = investment_amount * (total_annual_cost / 100)
-        total_cost = annual_cost * years
-        
-        # Show advisor compensation too
-        if investment_amount >= 100000:
-            company_a_annual_advisor_pay = investment_amount * 0.0002  # Wealth management engagement
-            company_b_annual_advisor_pay = investment_amount * 0.0035  # Mid-range Category 1
-            
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric("Your Annual Cost", f"${annual_cost:,.0f}")
-            with col2:
-                st.metric("Your Total Cost", f"${total_cost:,.0f}")
-            with col3:
-                st.metric("Advisor's Annual Pay", f"${company_a_annual_advisor_pay:,.0f} - ${company_b_annual_advisor_pay:,.0f}")
-        
-        st.markdown('<div class="warning-box">', unsafe_allow_html=True)
-        st.write("**💡 Key Insight:** Your advisor is financially incentivized to recommend higher-fee products and services. This analysis is based on actual compensation disclosures from major firms.")
-        st.markdown('</div>', unsafe_allow_html=True)
+    if not extracted_text:
+        st.error("Could not extract text from the document.")
+        return
+    
+    # Debug: Show what text was extracted
+    with st.expander("🔍 Debug: Extracted Text"):
+        st.text(extracted_text[:1000] + "..." if len(extracted_text) > 1000 else extracted_text)
+    
+    # Analyze with OpenAI
+    with st.spinner("Analyzing document with AI..."):
+        try:
+            prompt = f"""
+            Analyze ONLY the specific fees and costs explicitly stated in this document. Do not assume or add any fees not mentioned.
 
+            Document content: {extracted_text}
+
+            Provide analysis in this format:
+            1. EXPLICITLY STATED FEES: List only fees with percentages/amounts shown in the document
+            2. MISSING DISCLOSURES: Note what typical fees are NOT mentioned (without assuming they exist)
+            3. RED FLAGS: Identify if any fees seem high compared to industry standards
+
+            Important: 
+            - Do not mention 12b-1 fees unless explicitly shown
+            - Do not estimate transaction costs unless stated
+            - Do not provide "typical" fee ranges - only analyze what's written
+            - If a fee type isn't mentioned, say "Not disclosed" rather than assuming an amount
+            """
+            
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=1000,
+                temperature=0.3
+            )
+            
+            # Display the actual analysis
+            analysis_result = response.choices[0].message.content
+            st.markdown(analysis_result)
+            
+            # Add cost calculator based on actual fees found
+            st.subheader("💰 Cost Impact Calculator")
+            investment_amount = st.number_input(
+                "Enter your investment amount ($):", 
+                min_value=1000, 
+                value=100000, 
+                step=1000
+            )
+            
+            if investment_amount:
+                st.write("**Based on the fees found in your document:**")
+                st.write("Use the percentages identified above to calculate your annual costs.")
+                
+        except Exception as e:
+            st.error(f"Error analyzing document: {str(e)}")
+            st.write("Please check your OpenAI API key and try again.")
 def check_conflicts(file):
     """Check for conflicts of interest"""
     st.subheader("Conflict of Interest Analysis")
