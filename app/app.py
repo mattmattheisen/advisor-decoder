@@ -595,14 +595,14 @@ def document_analysis_page():
             if st.button("📊 Generate Report"):
                 generate_report(uploaded_file)
 
-    response = client.chat.completions.create(  # <-- NEW FORMAT
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "user", "content": prompt}
-    ],
-    max_tokens=1000,
-    temperature=0.3
-)
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=1000,
+                temperature=0.3
+            )
             
             # Display the actual analysis
             analysis_result = response.choices[0].message.content
