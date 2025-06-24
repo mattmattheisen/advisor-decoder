@@ -194,7 +194,7 @@ def extract_text_from_file(uploaded_file):
         return None
     
     return text
-    return text
+   
 
 def analyze_fees(file):
     """Actually analyze the uploaded document using OpenAI"""
