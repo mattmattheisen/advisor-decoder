@@ -8,8 +8,11 @@ from io import BytesIO
 import json
 import openai
 import PyPDF2
-import docx
-openai.api_key = "your-openai-api-key-here"
+import openai
+from openai import OpenAI
+
+# Initialize OpenAI client with new format
+client = OpenAI(api_key="your-openai-api-key-here")
 st.set_page_config(
     page_title="Advisor Decoder",
     page_icon="🔍",
