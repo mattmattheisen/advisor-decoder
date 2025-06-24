@@ -600,50 +600,14 @@ def document_analysis_page():
             if st.button("📊 Generate Report"):
                 generate_report(uploaded_file)
 
-def analyze_fees(file):
-    """Actually analyze the uploaded document using OpenAI"""
-    st.subheader("Fee Analysis Results")
-    
-    # Extract text from the document
-    with st.spinner("Extracting text from document..."):
-        extracted_text = extract_text_from_file(file)
-        
-    if not extracted_text:
-        st.error("Could not extract text from the document.")
-        return
-    
-    # Debug: Show what text was extracted
-    with st.expander("🔍 Debug: Extracted Text"):
-        st.text(extracted_text[:1000] + "..." if len(extracted_text) > 1000 else extracted_text)
-    
-    # Analyze with OpenAI
-    with st.spinner("Analyzing document with AI..."):
-        try:
-            prompt = f"""
-            Analyze ONLY the specific fees and costs explicitly stated in this document. Do not assume or add any fees not mentioned.
-
-            Document content: {extracted_text}
-
-            Provide analysis in this format:
-            1. EXPLICITLY STATED FEES: List only fees with percentages/amounts shown in the document
-            2. MISSING DISCLOSURES: Note what typical fees are NOT mentioned (without assuming they exist)
-            3. RED FLAGS: Identify if any fees seem high compared to industry standards
-
-            Important: 
-            - Do not mention 12b-1 fees unless explicitly shown
-            - Do not estimate transaction costs unless stated
-            - Do not provide "typical" fee ranges - only analyze what's written
-            - If a fee type isn't mentioned, say "Not disclosed" rather than assuming an amount
-            """
-            
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=1000,
-                temperature=0.3
-            )
+response = client.chat.completions.create(  # <-- NEW FORMAT
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "user", "content": prompt}
+    ],
+    max_tokens=1000,
+    temperature=0.3
+)
             
             # Display the actual analysis
             analysis_result = response.choices[0].message.content
