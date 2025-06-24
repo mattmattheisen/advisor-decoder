@@ -8,7 +8,7 @@ from io import BytesIO
 import json
 import openai
 import PyPDF2
-import openai
+
 from openai import OpenAI
 
 # Initialize OpenAI client with new format
