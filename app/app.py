@@ -938,25 +938,7 @@ def compensation_database_page():
         else:
             st.write("No specific results found. Try terms like 'annual fee', 'wealth management', 'platform fee', etc.")
     
-    # Key insights section
-    st.write("---")
-    st.subheader("💡 Key Insights from All Three Firms")
-    
-    insights = [
-        "**Company C is the Most Expensive:** Annual account fees, platform fees, and high transaction costs",
-        "**Fee Waiver Manipulation:** Company C waives fees if you use their advisory services - creating artificial pressure",
-        "**Company A Has Highest Variable Compensation:** 55-80% of advisor pay depends on what you buy",
-        "**Company B Pushes Managed Accounts:** 3-4x higher advisor compensation vs self-directed",
-        "**All Firms Favor Complex Products:** Higher fees and advisor compensation for sophisticated strategies",
-        "**Transfer Bonuses Are Universal:** All three firms pay advisors when you move money to them"
-    ]
-    
-    for insight in insights:
-        st.write(f"• {insight}")
-    
-    st.markdown('<div class="warning-box">', unsafe_allow_html=True)
-    st.write("**🎯 Bottom Line:** Company C has the highest fees and most pressure tactics. Companies A and B are more competitive but still have significant conflicts of interest built into their compensation structures.")
-    st.markdown('</div>', unsafe_allow_html=True)
+   
 
 def glossary_page():
     st.header("📚 Advisor-Speak Decoder")
