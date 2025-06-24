@@ -951,7 +951,8 @@ def glossary_page():
         st.subheader("Decode What Your Advisor Just Said")
         advisor_speak = {
             "Let's diversify your portfolio": "**Translation:** I want to spread your money across more products so I earn fees from multiple sources. **Ask:** What are the fees for each investment you're recommending?",
-            
+
+            "You need professional management": "**Translation:** I make more money from managed accounts than self-directed ones. **Reality:** Schwab advisors earn 32-42 basis points on managed vs. 9-12 on self-directed.",
             "This is a sophisticated strategy": "**Translation:** Complex = higher fees and commissions for me. **Ask:** Can you explain this in simple terms and show me all associated costs?",
             
             "You need professional management": "**Translation:** I make more money from managed accounts than self-directed ones. **Reality:** Schwab advisors earn 32-42 basis points on managed vs. 9-12 on self-directed.",
