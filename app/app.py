@@ -314,29 +314,7 @@ def quick_start_page():
     
     col1, col2, col3 = st.columns(3)
     
-    with col1:
-        st.markdown("""
-        **🟢 Fidelity**
-        - 55-80% variable compensation
-        - Real disclosure: Jan 2024
-        - 10x pay difference between products
-        """)
-    
-    with col2:
-        st.markdown("""
-        **🔵 Schwab** 
-        - Category-based compensation
-        - Real disclosure: Apr 2025
-        - $80-$3,500 incentive payments
-        """)
-    
-    with col3:
-        st.markdown("""
-        **🟡 Wells Fargo**
-        - $175 annual account fees
-        - Real disclosure: Mar 2025
-        - Fee waiver manipulation tactics
-        """)
+   
     
     st.markdown("""
     <div style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 2rem;">
