@@ -14,7 +14,6 @@ from openai import OpenAI
 # Initialize OpenAI client with new format
 client = OpenAI(api_key="your-openai-api-key-here")
 
-
 # Page configuration
 st.set_page_config(
     page_title="Advisor Decoder",
@@ -96,27 +95,6 @@ CONFLICT_INDICATORS = [
     "annual engagement fees on client balances"
 ]
 
-
-            # Display the actual analysis
-            analysis_result = response.choices[0].message.content
-            st.markdown(analysis_result)
-            
-            # Add cost calculator based on actual fees found
-            st.subheader("💰 Cost Impact Calculator")
-            investment_amount = st.number_input(
-                "Enter your investment amount ($):", 
-                min_value=1000, 
-                value=100000, 
-                step=1000
-            )
-            
-            if investment_amount:
-                st.write("**Based on the fees found in your document:**")
-                st.write("Use the percentages identified above to calculate your annual costs.")
-                
-        except Exception as e:
-            st.error(f"Error analyzing document: {str(e)}")
-            st.write("Please check your OpenAI API key and try again.")
 def extract_text_from_file(uploaded_file):
     """Extract text from various file types"""
     text = ""
@@ -150,7 +128,6 @@ def extract_text_from_file(uploaded_file):
         return None
     
     return text
-   
 
 def analyze_fees(file):
     """Actually analyze the uploaded document using OpenAI"""
@@ -189,12 +166,12 @@ def analyze_fees(file):
             """
             
             response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-            {"role": "user", "content": prompt}
-            ],
-            max_tokens=1000,
-            temperature=0.3
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=1000,
+                temperature=0.3
             )
             
             # Display the actual analysis
@@ -217,7 +194,6 @@ def analyze_fees(file):
         except Exception as e:
             st.error(f"Error analyzing document: {str(e)}")
             st.write("Please check your OpenAI API key and try again.")
-
 
 def main():
     st.markdown('<h1 class="main-header">🔍 Advisor Decoder</h1>', unsafe_allow_html=True)
@@ -397,12 +373,6 @@ def quick_start_page():
         </div>
         """, unsafe_allow_html=True)
     
-   
-    
-    col1, col2, col3 = st.columns(3)
-    
-   
-    
     st.markdown("""
     <div style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 2rem;">
         <p>Advisor Decoder v2.0 | Built from real compensation disclosure documents</p>
@@ -551,9 +521,6 @@ def document_analysis_page():
             if st.button("📊 Generate Report"):
                 generate_report(uploaded_file)
 
-            
-                
-        
 def check_conflicts(file):
     """Check for conflicts of interest"""
     st.subheader("Conflict of Interest Analysis")
@@ -964,8 +931,6 @@ def compensation_database_page():
                 st.write(f"• {result}")
         else:
             st.write("No specific results found. Try terms like 'annual fee', 'wealth management', 'platform fee', etc.")
-    
-   
 
 def glossary_page():
     st.header("📚 Advisor-Speak Decoder")
@@ -978,8 +943,7 @@ def glossary_page():
         st.subheader("Decode What Your Advisor Just Said")
         advisor_speak = {
             "Let's diversify your portfolio": "**Translation:** I want to spread your money across more products so I earn fees from multiple sources. **Ask:** What are the fees for each investment you're recommending?",
-
-            "You need professional management": "**Translation:** I make more money from managed accounts than self-directed ones. **Reality:** Schwab advisors earn 32-42 basis points on managed vs. 9-12 on self-directed.",
+            
             "This is a sophisticated strategy": "**Translation:** Complex = higher fees and commissions for me. **Ask:** Can you explain this in simple terms and show me all associated costs?",
             
             "You need professional management": "**Translation:** I make more money from managed accounts than self-directed ones. **Reality:** Schwab advisors earn 32-42 basis points on managed vs. 9-12 on self-directed.",
@@ -1060,11 +1024,11 @@ def glossary_page():
         
         red_flags = {
             "This is what I use for my own family": "**Red Flag:** Often used to build trust, but may not be true or relevant to your situation. **Ask:** Can you show me documentation of your personal investments?",
-
-
+            
             "Professional Management takes the emotion out of investing": "**Translation:** I make more money when you're in managed accounts, so I'm framing this as helping you. **Reality:** Most 'emotional' investing mistakes happen when advisors push you to buy high-fee products. **Ask:** How does your compensation change between self-directed and managed accounts?",
-
-"You get access to our best and brightest minds when you have your assets managed": "**Translation:** We're trying to justify higher fees by making you feel special. **Reality:** Many 'best and brightest' recommendations are driven by what pays us the most. **Ask:** Can you show me the track record of these 'best minds' versus low-cost index funds?",
+            
+            "You get access to our best and brightest minds when you have your assets managed": "**Translation:** We're trying to justify higher fees by making you feel special. **Reality:** Many 'best and brightest' recommendations are driven by what pays us the most. **Ask:** Can you show me the track record of these 'best minds' versus low-cost index funds?",
+            
             "You need to act quickly": "**Red Flag:** Pressure tactics to prevent you from researching alternatives. **Response:** Any good investment will still be good tomorrow. Take time to research.",
             
             "This is only available through us": "**Red Flag:** Often means higher fees because there's no competition. **Ask:** Why isn't this available elsewhere, and what are the fees?",
