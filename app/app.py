@@ -6,6 +6,16 @@ from datetime import datetime
 import base64
 from io import BytesIO
 import json
+import openai
+import PyPDF2
+import docx
+openai.api_key = "your-openai-api-key-here"
+st.set_page_config(
+    page_title="Advisor Decoder",
+    page_icon="🔍",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # Page configuration
 st.set_page_config(
