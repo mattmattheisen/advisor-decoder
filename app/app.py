@@ -308,9 +308,7 @@ def quick_start_page():
         </div>
         """, unsafe_allow_html=True)
     
-    # Real testimonial-style section
-    st.write("---")
-    st.subheader("📊 Based on Real Data From:")
+   
     
     col1, col2, col3 = st.columns(3)
     
