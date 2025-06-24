@@ -13,12 +13,7 @@ from openai import OpenAI
 
 # Initialize OpenAI client with new format
 client = OpenAI(api_key="your-openai-api-key-here")
-st.set_page_config(
-    page_title="Advisor Decoder",
-    page_icon="🔍",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+
 
 # Page configuration
 st.set_page_config(
