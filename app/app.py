@@ -1033,7 +1033,11 @@ def glossary_page():
         
         red_flags = {
             "This is what I use for my own family": "**Red Flag:** Often used to build trust, but may not be true or relevant to your situation. **Ask:** Can you show me documentation of your personal investments?",
-            
+
+
+            "Professional Management takes the emotion out of investing": "**Translation:** I make more money when you're in managed accounts, so I'm framing this as helping you. **Reality:** Most 'emotional' investing mistakes happen when advisors push you to buy high-fee products. **Ask:** How does your compensation change between self-directed and managed accounts?",
+
+"You get access to our best and brightest minds when you have your assets managed": "**Translation:** We're trying to justify higher fees by making you feel special. **Reality:** Many 'best and brightest' recommendations are driven by what pays us the most. **Ask:** Can you show me the track record of these 'best minds' versus low-cost index funds?",
             "You need to act quickly": "**Red Flag:** Pressure tactics to prevent you from researching alternatives. **Response:** Any good investment will still be good tomorrow. Take time to research.",
             
             "This is only available through us": "**Red Flag:** Often means higher fees because there's no competition. **Ask:** Why isn't this available elsewhere, and what are the fees?",
