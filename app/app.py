@@ -195,7 +195,7 @@ def analyze_fees(file):
                 ],
                 max_tokens=1000,
                 temperature=0.3
-             )
+            )
             
             # Display the actual analysis
             analysis_result = response.choices[0].message.content
