@@ -207,12 +207,10 @@ def main():
         st.session_state.page = "🏠 Quick Start"
     
     page = st.sidebar.selectbox(
-    "Choose a tool:",
-    ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"],
-    index=["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"].index(st.session_state.page) if st.session_state.page in ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"] else 0
-)
-
-    
+        "Choose a tool:",
+        ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"],
+        index=["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"].index(st.session_state.page) if st.session_state.page in ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"] else 0
+    )
     
     # Update session state when sidebar selection changes
     st.session_state.page = page
@@ -233,7 +231,6 @@ def main():
         meeting_prep_page()
     elif page == "🧠 Psychology":
         psychology_page()
-
 
 def quick_start_page():
     st.markdown("""
@@ -487,9 +484,6 @@ def meeting_prep_page():
     st.markdown('<div class="success-box">', unsafe_allow_html=True)
     st.write("**💡 Remember:** You're the client. A good advisor will appreciate your preparation and questions.")
     st.markdown('</div>', unsafe_allow_html=True)
-st.markdown('<div class="success-box">', unsafe_allow_html=True)
-    st.write("**💡 Remember:** You're the client. A good advisor will appreciate your preparation and questions.")
-    st.markdown('</div>', unsafe_allow_html=True)
 
 def psychology_page():
     st.header("🧠 Psychology: Understanding Advisor Sales Tactics")
@@ -657,6 +651,7 @@ def psychology_page():
     st.write("• **Your money, your timeline** for making decisions")
     st.write("• **Trust is earned**, not manufactured through sales techniques")
     st.markdown('</div>', unsafe_allow_html=True)
+
 def document_analysis_page():
     st.header("📄 Document Analysis")
     st.write("Upload your financial documents to analyze fees and terms.")
