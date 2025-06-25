@@ -13,7 +13,7 @@ from openai import OpenAI
 
 # Initialize OpenAI client with new format
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-st.write(f"API key starts with: {st.secrets['OPENAI_API_KEY'][:8]}...")
+
 # Page configuration
 st.set_page_config(
     page_title="Advisor Decoder",
