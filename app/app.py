@@ -230,6 +230,9 @@ page = st.sidebar.selectbox(
         glossary_page()
     elif page == "🔧 Meeting Prep Tool":
         meeting_prep_page()
+    elif page == "🧠 Psychology":
+    psychology_page()
+
 
 def quick_start_page():
     st.markdown("""
@@ -483,7 +486,176 @@ def meeting_prep_page():
     st.markdown('<div class="success-box">', unsafe_allow_html=True)
     st.write("**💡 Remember:** You're the client. A good advisor will appreciate your preparation and questions.")
     st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('<div class="success-box">', unsafe_allow_html=True)
+    st.write("**💡 Remember:** You're the client. A good advisor will appreciate your preparation and questions.")
+    st.markdown('</div>', unsafe_allow_html=True)
 
+def psychology_page():
+    st.header("🧠 Psychology: Understanding Advisor Sales Tactics")
+    st.write("Learn the psychological techniques financial advisors use to influence your decisions.")
+    
+    st.markdown("""
+    <div style="background: #fff3cd; 
+                border: 1px solid #ffeaa7; 
+                border-radius: 8px; 
+                padding: 1.5rem; 
+                margin: 1rem 0;">
+        <p style="margin: 0; color: #856404;">
+            <strong>⚠️ What You Need to Know:</strong> Financial advisors receive extensive sales training using proven psychological techniques designed to influence your decisions. This section helps you recognize these tactics so you can maintain control during meetings.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Add tabs for easy navigation
+    tab1, tab2, tab3, tab4 = st.tabs(["🎯 The 5-Stage Process", "🧠 Psychological Tricks", "🚩 Red Flags", "🛡️ Your Defense"])
+    
+    with tab1:
+        st.subheader("The 5-Stage Influence Framework")
+        st.write("Most advisors are trained to follow this systematic psychological process:")
+        
+        with st.expander("**Stage 1: PREPARE - Setting the Psychological Trap**"):
+            st.write("**What They're Doing:**")
+            st.write("• Planning how to 'influence your state of mind'")
+            st.write("• Setting primary objective (the sale) and secondary objectives (backup plans)")
+            st.write("• Researching your psychological profile before meeting")
+            st.write("")
+            st.write("**Red Flags to Watch For:**")
+            st.write("• Advisors who seem to know a lot about you before you've shared")
+            st.write("• Meetings that feel overly structured or scripted")
+            st.write("• Questions that seem designed to uncover personal vulnerabilities")
+        
+        with st.expander("**Stage 2: CONNECT - Building False Intimacy**"):
+            st.write("**What They're Doing:**")
+            st.write("• **Rapport Building**: Creating artificial emotional connection")
+            st.write("• **Managing Impressions**: Controlling how you perceive them")
+            st.write("• **Finding Common Ground**: Identifying shared experiences to exploit")
+            st.write("• **Targeted Value Agenda**: Framing the conversation to their advantage")
+            st.write("• **Gaining Permission**: Getting small commitments that lead to bigger ones")
+            st.write("")
+            st.write("**Common Scripts You'll Hear:**")
+            st.write("• 'We have so much in common!'")
+            st.write("• 'I understand exactly what you're going through'")
+            st.write("• 'Would it be helpful if we discussed your financial goals?'")
+            st.write("• 'Do I have your permission to ask a few questions?'")
+        
+        with st.expander("**Stage 3: EXPLORE - Extracting Your Vulnerabilities**"):
+            st.write("**The 'FIND' questioning technique to uncover:**")
+            st.write("• **Facts**: Your financial situation")
+            st.write("• **Issues**: Your pain points and fears")  
+            st.write("• **Needs**: What you think you want")
+            st.write("• **Drivers**: Your emotional triggers")
+            st.write("")
+            st.write("**Questions Designed to Find Pressure Points:**")
+            st.write("• 'What keeps you up at night about money?'")
+            st.write("• 'What would happen if you couldn't work tomorrow?'")
+            st.write("• 'How would you feel if you outlived your money?'")
+            st.write("• 'What's your biggest financial regret?'")
+        
+        with st.expander("**Stage 4: PRESENT - Using Your Words Against You**"):
+            st.write("**What They're Doing:**")
+            st.write("• **Positioning Solutions**: Presenting themselves as your savior")
+            st.write("• **Referring to Needs**: Using your own words to create urgency")
+            st.write("• **Emphasizing Benefits**: Painting an unrealistic dream scenario")
+            st.write("• **Linking to Drivers**: Hitting your emotional triggers")
+            st.write("")
+            st.write("**Manipulation Phrases to Recognize:**")
+            st.write("• 'Remember when you said your biggest fear was...'")
+            st.write("• 'Based on what you told me about your situation...'")
+            st.write("• 'This addresses exactly what you said was important...'")
+        
+        with st.expander("**Stage 5: DEVELOP - Securing the Close**"):
+            st.write("**What They're Doing:**")
+            st.write("• **Gaining Commitment**: Securing the sale")
+            st.write("• **Creating Action Steps**: Building momentum toward signing")
+            st.write("• **Creating Awareness**: Using fear-of-missing-out (FOMO) tactics")
+            st.write("• **Securing Referrals**: Expanding their network through you")
+            st.write("")
+            st.write("**High-Pressure Closing Tactics:**")
+            st.write("• 'This opportunity won't be available next week'")
+            st.write("• 'I can only offer this rate if you decide today'")
+            st.write("• 'Other clients who waited wished they hadn't'")
+    
+    with tab2:
+        st.subheader("Common Psychological Tricks")
+        
+        tricks = {
+            "State of Mind Manipulation": {
+                "what": "Advisors are trained to manage your emotional state to make you more receptive to their proposals.",
+                "recognize": "Meeting environments designed to impress or intimidate, using your fears to create urgency, making you feel special or exclusive"
+            },
+            "False Scarcity": {
+                "what": "Creating artificial time pressure or limited availability.",
+                "recognize": "Good investments don't disappear overnight, legitimate advisors don't pressure immediate decisions"
+            },
+            "Authority Positioning": {
+                "what": "Using credentials, awards, or associations to appear more trustworthy.",
+                "recognize": "Credentials don't guarantee they'll act in your interest, awards might be purchased or meaningless"
+            }
+        }
+        
+        for trick, details in tricks.items():
+            with st.expander(f"**{trick}**"):
+                st.write(f"**What It Is:** {details['what']}")
+                st.write(f"**How to Recognize:** {details['recognize']}")
+    
+    with tab3:
+        st.subheader("🚩 Red Flags That Should Make You Leave")
+        
+        red_flags = [
+            "Pressure to decide today",
+            "Reluctance to provide written information", 
+            "Focusing more on emotions than facts",
+            "Asking for personal information before explaining services",
+            "Making guarantees about investment returns",
+            "Seeming more interested in your assets than your goals"
+        ]
+        
+        for flag in red_flags:
+            st.write(f"🚩 {flag}")
+        
+        st.markdown('<div class="alert-box">', unsafe_allow_html=True)
+        st.write("**If you encounter any of these red flags, it's time to leave the meeting.**")
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    with tab4:
+        st.subheader("🛡️ How to Protect Yourself")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.write("**Before the Meeting:**")
+            st.write("• Research the advisor and firm independently")
+            st.write("• Prepare your own list of questions")
+            st.write("• Decide on your boundaries ahead of time")
+            st.write("")
+            st.write("**During the Meeting:**")
+            st.write("• Take notes on everything discussed")
+            st.write("• Ask for all information in writing")
+            st.write("• Don't share unnecessary personal details")
+            st.write("• Trust your instincts if something feels off")
+        
+        with col2:
+            st.write("**Questions That Put You Back in Control:**")
+            control_questions = [
+                "Are you a fiduciary? What does that mean exactly?",
+                "How are you compensated for this recommendation?",
+                "What are all the fees I'll pay, including hidden costs?",
+                "Can you provide references from long-term clients?",
+                "What happens if this investment performs poorly?",
+                "Can I have a week to research this independently?"
+            ]
+            
+            for question in control_questions:
+                st.write(f"• {question}")
+    
+    st.write("---")
+    st.markdown('<div class="success-box">', unsafe_allow_html=True)
+    st.write("**💡 Remember: You're in Charge**")
+    st.write("• **You're interviewing them**, not the other way around")
+    st.write("• **Good advisors welcome questions** and don't pressure you")
+    st.write("• **Your money, your timeline** for making decisions")
+    st.write("• **Trust is earned**, not manufactured through sales techniques")
+    st.markdown('</div>', unsafe_allow_html=True)
 def document_analysis_page():
     st.header("📄 Document Analysis")
     st.write("Upload your financial documents to analyze fees and terms.")
