@@ -206,7 +206,7 @@ def main():
     if 'page' not in st.session_state:
         st.session_state.page = "🏠 Quick Start"
     
-page = st.sidebar.selectbox(
+    page = st.sidebar.selectbox(
     "Choose a tool:",
     ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"],
     index=["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"].index(st.session_state.page) if st.session_state.page in ["🏠 Quick Start", "📄 Document Analysis", "🧮 Fee Calculator", "⚠️ Conflict Checker", "💰 Compensation Database", "📚 Advisor-Speak Decoder", "🔧 Meeting Prep Tool", "🧠 Psychology"] else 0
