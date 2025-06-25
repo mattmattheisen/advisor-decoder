@@ -12,7 +12,7 @@ import docx
 from openai import OpenAI
 
 # Initialize OpenAI client with new format
-client = OpenAI(api_key="your-openai-api-key-here")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Page configuration
 st.set_page_config(
