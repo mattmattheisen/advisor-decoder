@@ -232,7 +232,7 @@ def main():
     elif page == "🔧 Meeting Prep Tool":
         meeting_prep_page()
     elif page == "🧠 Psychology":
-    psychology_page()
+        psychology_page()
 
 
 def quick_start_page():
